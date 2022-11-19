@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     Rigidbody rb;
-    private float speed = 500f;
+    private float speed = 5f;
     CurrentDirection yonSecimi;
     void Start()
     {
@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        RayCastDetector();
         if (Input.GetKeyDown("space"))
         {
             ChangeDirection();
@@ -23,7 +24,19 @@ public class PlayerController : MonoBehaviour
         }
         
     }
-
+    private void RayCastDetector()
+    {
+        RaycastHit zeminKontrol;
+        if(Physics.Raycast(transform.position,Vector3.down,out zeminKontrol))
+        {//Eðer player objem zemine temas ediyorsa hareket metodunu çaðýr
+            MovePlayer();
+        }
+        else
+        {
+            //Player objem zemine temas etmiyorsa durdur
+            StopPlayer();
+        }
+    }
     private enum CurrentDirection
     {
         right,
