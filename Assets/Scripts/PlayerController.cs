@@ -73,11 +73,13 @@ public class PlayerController : MonoBehaviour
     {
         if (yonSecimi == CurrentDirection.right)
         {
-            rb.AddForce((Vector3.forward).normalized*speed*Time.deltaTime,ForceMode.VelocityChange);
+            transform.Translate(Vector3.forward.normalized*speed*Time.deltaTime);
+            //rb.AddForce((Vector3.forward).normalized*speed*Time.deltaTime,ForceMode.VelocityChange);
         }
         else if (yonSecimi == CurrentDirection.left)
         {
-            rb.AddForce((Vector3.right).normalized * speed * Time.deltaTime, ForceMode.VelocityChange);
+            transform.Translate(Vector3.right.normalized * speed * Time.deltaTime);
+            //rb.AddForce((Vector3.right).normalized * speed * Time.deltaTime, ForceMode.VelocityChange);
         }
     }
     private void StopPlayer()
