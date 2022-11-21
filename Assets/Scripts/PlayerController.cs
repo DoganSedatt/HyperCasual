@@ -8,11 +8,13 @@ public class PlayerController : MonoBehaviour
     private float speed = 5f;
     CurrentDirection yonSecimi;
     public bool isPlayerDead;
+    private GameManager gameManager;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         yonSecimi = CurrentDirection.left;
         isPlayerDead = false;
+        gameManager = FindObjectOfType<GameManager>();
     }
 
     // Update is called once per frame
@@ -21,10 +23,10 @@ public class PlayerController : MonoBehaviour
         
         if (!isPlayerDead)
         {
-            
             RayCastDetector();
             if (Input.GetKeyDown("space"))
             {
+                gameManager.score++;
                 ChangeDirection();
                 StopPlayer();
             }
@@ -48,6 +50,7 @@ public class PlayerController : MonoBehaviour
             StopPlayer();
             isPlayerDead = true;
             this.gameObject.SetActive(false);
+            gameManager.GameOver();
         }
     }
     private enum CurrentDirection
