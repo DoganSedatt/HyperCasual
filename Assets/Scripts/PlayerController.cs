@@ -7,20 +7,31 @@ public class PlayerController : MonoBehaviour
     Rigidbody rb;
     private float speed = 5f;
     CurrentDirection yonSecimi;
+    public bool isPlayerDead;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         yonSecimi = CurrentDirection.left;
+        isPlayerDead = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        RayCastDetector();
-        if (Input.GetKeyDown("space"))
+        
+        if (!isPlayerDead)
         {
-            ChangeDirection();
-            StopPlayer();
+            
+            RayCastDetector();
+            if (Input.GetKeyDown("space"))
+            {
+                ChangeDirection();
+                StopPlayer();
+            }
+        }
+        else
+        {
+            return;
         }
         
     }
@@ -35,6 +46,8 @@ public class PlayerController : MonoBehaviour
         {
             //Player objem zemine temas etmiyorsa durdur
             StopPlayer();
+            isPlayerDead = true;
+            this.gameObject.SetActive(false);
         }
     }
     private enum CurrentDirection
