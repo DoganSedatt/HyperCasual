@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public GameObject loseUI;
+    public GameObject winUI;
     public Text scoreText;
     public int score;
     void Start()
@@ -17,14 +18,27 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         loseUI.SetActive(true);
+        //Oyun bitti panelini aktif et
         scoreText.text = "Skor:" + score;
+        //skor textine score deðiþkenindeki deðeri ata.
     }
     public void RestartGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        //Aktif sahneyi tekrar yükler
     }
     public void GameQuit()
     {
         Application.Quit();
+        //Uygulamadan çýkýþ
     }
+    public void LevelComplete()
+    {
+        winUI.SetActive(true);
+    }
+    public void NextLEvel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+    
 }

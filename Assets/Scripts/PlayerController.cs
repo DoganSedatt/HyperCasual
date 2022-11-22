@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
         yonSecimi = CurrentDirection.left;
         isPlayerDead = false;
         gameManager = FindObjectOfType<GameManager>();
+        Time.timeScale = 1f;
     }
 
     // Update is called once per frame
@@ -26,7 +27,7 @@ public class PlayerController : MonoBehaviour
             RayCastDetector();
             if (Input.GetKeyDown("space"))
             {
-                gameManager.score++;
+                gameManager.score++;//Space tuþuna basmak +1 score olarak eklenecek. 
                 ChangeDirection();
                 StopPlayer();
             }
@@ -88,5 +89,15 @@ public class PlayerController : MonoBehaviour
     private void StopPlayer()
     {
         rb.velocity = Vector3.zero;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Finish"))
+        {
+            Debug.Log("Tebrikler");
+            gameManager.LevelComplete();
+            Time.timeScale = 0f;
+        }
     }
 }
