@@ -8,7 +8,9 @@ public class GameManager : MonoBehaviour
 {
     public GameObject loseUI;
     public GameObject winUI;
-    public Text scoreText;
+    public Text loseScoreText;
+    public Text winScoreText;
+
     public int score;
     void Start()
     {
@@ -19,7 +21,7 @@ public class GameManager : MonoBehaviour
     {
         loseUI.SetActive(true);
         //Oyun bitti panelini aktif et
-        scoreText.text = "Skor:" + score;
+        loseScoreText.text = "Skor:" + score;
         //skor textine score deðiþkenindeki deðeri ata.
     }
     public void RestartGame()
@@ -35,6 +37,8 @@ public class GameManager : MonoBehaviour
     public void LevelComplete()
     {
         winUI.SetActive(true);
+        
+        winScoreText.text ="Tebrikler!!! ".ToUpper()+"\n" + " Skor:" + score;
     }
     public void NextLEvel()
     {
