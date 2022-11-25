@@ -10,8 +10,10 @@ public class GameManager : MonoBehaviour
     public GameObject winUI;
     public Text loseScoreText;
     public Text winScoreText;
-
+    public GameObject scoreObject;
+    public GameObject effect;
     public int score;
+    
     void Start()
     {
         
@@ -39,6 +41,11 @@ public class GameManager : MonoBehaviour
         winUI.SetActive(true);
         
         winScoreText.text ="Tebrikler!!! ".ToUpper()+"\n" + " Skor:" + score;
+    }
+    public void ScoreObject()
+    {
+        score += 15;//Skoru artýr ve efekt objesini oluþtur
+        Instantiate(effect, scoreObject.transform.position, Quaternion.Euler(new Vector3(90,0,0))) ;
     }
     public void NextLEvel()
     {

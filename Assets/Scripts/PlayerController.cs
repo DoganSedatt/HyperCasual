@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     CurrentDirection yonSecimi;
     public bool isPlayerDead;
     private GameManager gameManager;
+    
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -98,6 +99,12 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Tebrikler");
             gameManager.LevelComplete();
             Time.timeScale = 0f;
+        }
+        if (other.CompareTag("scoreObject"))
+        {
+            gameManager.ScoreObject();
+            Destroy(other.gameObject);
+            
         }
     }
 }
