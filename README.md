@@ -1,6 +1,6 @@
 # HyperCasualGame
 
-                                                              OYUN İÇİ GÖRÜNTÜLER
+                                                         OYUN İÇİ GÖRÜNTÜLER
                                                               
 ![Ekran Alıntısı](https://user-images.githubusercontent.com/79220327/203995709-7e397e70-5e40-4562-a985-8e6a4fe4f5c6.PNG)
 
